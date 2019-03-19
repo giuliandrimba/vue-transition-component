@@ -1,15 +1,10 @@
+import VueRouter, { RouteConfig } from 'vue-router';
 import HomePage from '../../page/HomePage';
 import CodePage from '../../page/CodePage';
 
-export default [
-  {
-    path: '/',
-    component: HomePage,
-    name: 'home',
-  },
-  {
-    path: '/code',
-    component: CodePage,
-    name: 'code',
-  },
-];
+const navRoutes = <Array<RouteConfig>>[
+  { name: 'home', path: '/', component: HomePage, props: true },
+  { name: 'code', path: '/code', component: CodePage, props: true}
+]
+
+export default navRoutes

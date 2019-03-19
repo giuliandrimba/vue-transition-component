@@ -1,18 +1,18 @@
 import { TimelineMax, Expo } from 'gsap';
 import AbstractVueTransitionController from "../../../../src/lib/util/AbstractVueTransitionController";
-import {IAbstractTransitionComponent} from "../../../../src";
+import { AbstractTransitionComponent } from '../../../../src/lib/mixin/AbstractTransitionComponent';
 
 export default class HomePageTransitionController extends AbstractVueTransitionController {
 
   /**
    * @protected
    * @param {TimelineMax} timeline
-   * @param {IAbstractTransitionComponent} parent
+   * @param {AbstractTransitionComponent} parent
    * @param {string} id
    */
   protected setupTransitionInTimeline(
     timeline: TimelineMax,
-    parent:IAbstractTransitionComponent,
+    parent:AbstractTransitionComponent,
     id:string): void {
     timeline.fromTo(
       parent.$el,
@@ -32,12 +32,12 @@ export default class HomePageTransitionController extends AbstractVueTransitionC
   /**
    * @protected
    * @param {TimelineMax} timeline
-   * @param {IAbstractTransitionComponent} parent
+   * @param {AbstractTransitionComponent} parent
    * @param {string} id
    */
   protected setupTransitionOutTimeline(
     timeline: TimelineMax,
-    parent:IAbstractTransitionComponent,
+    parent:AbstractTransitionComponent,
     id:string): void {
     timeline.to(
       parent.$el,
@@ -53,11 +53,11 @@ export default class HomePageTransitionController extends AbstractVueTransitionC
   /**
    * @protected
    * @param {TimelineMax} timeline
-   * @param {IAbstractTransitionComponent} parent
+   * @param {AbstractTransitionComponent} parent
    * @param {string} id
    */
   protected setupLoopingAnimationTimeline(
     timeline:TimelineMax,
-    parent:IAbstractTransitionComponent,
+    parent:AbstractTransitionComponent,
     id:string): void {}
 }

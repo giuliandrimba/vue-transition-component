@@ -1,5 +1,5 @@
 import DummyComponentATransitionController from "./DummyComponentATransitionController";
-import AbstractTransitionComponent from "../../../../src/lib/mixin/AbstractTransitionComponent";
+import { AbstractTransitionComponent } from "../../../../src/lib/mixin/AbstractTransitionComponent";
 import DummyComponentB from "../DummyComponentB";
 
 export default {

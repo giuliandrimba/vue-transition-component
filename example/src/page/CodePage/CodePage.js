@@ -1,5 +1,5 @@
 import hljs from 'highlight.js';
-import AbstractPageTransitionComponent from '../../../../src/lib/mixin/AbstractPageTransitionComponent';
+import { AbstractPageTransitionComponent } from '../../../../src/lib/mixin/AbstractPageTransitionComponent';
 import CodepageTransitionController from './CodepageTransitionController';
 import DummyComponentA from '../../component/DummyComponentA';
 import DummyComponentB from '../../component/DummyComponentB';
@@ -15,8 +15,10 @@ export default {
   },
   methods: {
     handleAllComponentsReady() {
+      console.log('test')
       this.transitionController = new CodepageTransitionController(this);
       this.$el.querySelectorAll('pre').forEach(code => hljs.highlightBlock(code));
+      this.transitionIn();
       this.isReady();
     },
   },
