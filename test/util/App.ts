@@ -1,6 +1,5 @@
 import Vue from 'vue/dist/vue.js';
-import { Component } from 'vue-property-decorator';
-import abstractRegistrableComponent, { AbstractRegistrableComponent } from '../../src/lib/mixin/AbstractRegistrableComponent';
+import { AbstractRegistrableComponent } from '../../src/lib/mixin/AbstractRegistrableComponent';
 import { AbstractTransitionComponent } from '../../src/lib/mixin/AbstractTransitionComponent';
 import { AbstractPageTransitionComponent } from '../../src/lib/mixin/AbstractPageTransitionComponent';
 import ChildComponentA from './ChildComponentA/ChildComponentA';
@@ -15,20 +14,20 @@ Vue.config.productionTip = false;
  * @returns {Vue}
  */
 export const getApplication = () => {
-  @Component({
+  return new Vue({
+    name: 'App',
+    extends: AbstractRegistrableComponent,
     components: {
       ChildComponentA,
       ChildComponentB,
       PageComponentA,
     },
     template: `<div>
-    <ChildComponentA ref="ChildComponentA"/>
-    <ChildComponentB ref="ChildComponentB" />
-    <PageComponentA ref="PageComponentA" />
-  </div>`
-  })
-  class App extends AbstractRegistrableComponent {}
-  return (new App()).$mount();
+				<ChildComponentA ref="ChildComponentA"/>
+				<ChildComponentB ref="ChildComponentB" />
+				<PageComponentA ref="PageComponentA" />
+			</div>`,
+  }).$mount();
 };
 
 /**
