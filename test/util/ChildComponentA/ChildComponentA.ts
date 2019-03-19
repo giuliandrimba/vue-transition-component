@@ -5,9 +5,9 @@ import ChildComponentB from '../ChildComponentB/ChildComponentB';
 
 @Component({
   components: {
-    ChildComponentB: new ChildComponentB(),
+    ChildComponentB,
   },
-  template: `<div><div ref="ChildComponentB" /></div>`,
+  template: '<div><ChildComponentB ref="ChildComponentB" /></div>',
 })
 export default class ChildComponentA extends AbstractTransitionComponent {
   handleAllComponentsReady() {
