@@ -18,7 +18,8 @@ describe('AbstractVueTransitionControllerSpec', () => {
       const component = <AbstractTransitionComponent>getMountedComponent(ChildComponentA);
       return component.allComponentsReady
         .then(() =>
-          component.transitionController.getTimeline(<AbstractTransitionComponent>component.$refs.ChildComponentB),
+          component.transitionController.getTimeline(<AbstractTransitionComponent>component
+            .$refs.ChildComponentB),
         )
         .then(component => expect(component).to.not.be.undefined);
     });

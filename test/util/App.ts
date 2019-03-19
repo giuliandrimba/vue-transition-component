@@ -1,4 +1,4 @@
-import Vue from 'vue/dist/vue.runtime.common';
+import Vue from 'vue/dist/vue.js';
 import { Component } from 'vue-property-decorator';
 import abstractRegistrableComponent, { AbstractRegistrableComponent } from '../../src/lib/mixin/AbstractRegistrableComponent';
 import { AbstractTransitionComponent } from '../../src/lib/mixin/AbstractTransitionComponent';
