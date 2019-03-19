@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { FlowManager } from '../src/lib/util/FlowManager';
 import FlowType from '../src/lib/enum/FlowType';
-import IAbstractPageTransitionComponent from '../src/lib/interface/IAbstractPageTransitionComponent';
+import { AbstractPageTransitionComponent } from '../src/lib/mixin/AbstractPageTransitionComponent';
 import { getApplication, getChildComponent } from './util/App';
 
 describe('FlowManager', () => {
@@ -22,7 +22,7 @@ describe('FlowManager', () => {
   let flowManager: FlowManager;
   let app: any;
 
-  // const getPageComponent = (): Promise<IAbstractPageTransitionComponent> => {
+  // const getPageComponent = (): Promise<AbstractPageTransitionComponent> => {
   //   return app.$_allComponentsReady
   //     .then(() => app.getChild('PageComponentA'));
   // };
@@ -39,7 +39,7 @@ describe('FlowManager', () => {
 
   it('start a NORMAL flow', (done) => {
     getChildComponent(app, 'PageComponentA')
-      .then((page: IAbstractPageTransitionComponent) => {
+      .then((page: AbstractPageTransitionComponent) => {
         flowManager.start(
           page,
           () => {
@@ -54,7 +54,7 @@ describe('FlowManager', () => {
 
   it('start a NORMAL flow and try to run it twice', (done) => {
     getChildComponent(app, 'PageComponentA')
-      .then((page: IAbstractPageTransitionComponent) => {
+      .then((page: AbstractPageTransitionComponent) => {
         flowManager.start(
           page,
           () => {
@@ -68,7 +68,7 @@ describe('FlowManager', () => {
 
   it('start a NORMAL flow with the same component id', (done) => {
     getChildComponent(app, 'PageComponentA')
-      .then((page: IAbstractPageTransitionComponent) => {
+      .then((page: AbstractPageTransitionComponent) => {
         flowManager.start(
           page,
           () => {
@@ -82,7 +82,7 @@ describe('FlowManager', () => {
 
   it('start a CROSS flow', (done) => {
     getChildComponent(app, 'PageComponentA')
-      .then((page: IAbstractPageTransitionComponent) => {
+      .then((page: AbstractPageTransitionComponent) => {
         // Change the flow to Cross!
         page.flow = FlowType.CROSS;
 
@@ -98,7 +98,7 @@ describe('FlowManager', () => {
 
   it('should throw an error', () => {
     return getChildComponent(app, 'PageComponentA')
-      .then((page: IAbstractPageTransitionComponent) => {
+      .then((page: AbstractPageTransitionComponent) => {
         const pageComponent = page;
         // Strip out the flow to make it fail
         pageComponent.flow = null;

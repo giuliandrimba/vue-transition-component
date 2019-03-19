@@ -1,8 +1,7 @@
 import Vue from 'vue/dist/vue.js';
-import AbstractRegistrableComponent from '../../src/lib/mixin/AbstractRegistrableComponent';
-import { IAbstractRegistrableComponent } from '../../src/lib/interface/IAbstractRegistrableComponent';
-import { IAbstractTransitionComponent } from '../../src/lib/interface/IAbstractTransitionComponent';
-import { IAbstractPageTransitionComponent } from '../../src/lib/interface/IAbstractPageTransitionComponent';
+import abstractRegistrableComponent, { AbstractRegistrableComponent } from '../../src/lib/mixin/AbstractRegistrableComponent';
+import { AbstractTransitionComponent } from '../../src/lib/mixin/AbstractTransitionComponent';
+import { AbstractPageTransitionComponent } from '../../src/lib/mixin/AbstractPageTransitionComponent';
 import ChildComponentA from './ChildComponentA/ChildComponentA';
 import ChildComponentB from './ChildComponentB/ChildComponentB';
 import PageComponentA from './PageComponentA/PageComponentA';
@@ -17,7 +16,7 @@ Vue.config.productionTip = false;
 export const getApplication = () => {
   return new Vue({
     name: 'App',
-    extends: AbstractRegistrableComponent,
+    extends: abstractRegistrableComponent,
     components: {
       ChildComponentA,
       ChildComponentB,
@@ -35,33 +34,33 @@ export const getApplication = () => {
  * @description mount a provided vue component and return the instance
  * @param component
  * @param propsData
- * @returns {IAbstractPageTransitionComponent|IAbstractTransitionComponent|IAbstractRegistrableComponent}
+ * @returns {AbstractPageTransitionComponent|AbstractTransitionComponent|AbstractRegistrableComponent}
  */
 export const getMountedComponent = (
   component,
   propsData = {},
 ):
-  | IAbstractPageTransitionComponent
-  | IAbstractTransitionComponent
-  | IAbstractRegistrableComponent => {
+  | AbstractPageTransitionComponent
+  | AbstractTransitionComponent
+  | AbstractRegistrableComponent => {
   const constructor = (<any>Vue).extend(component);
   return <
-    | IAbstractPageTransitionComponent
-    | IAbstractTransitionComponent
-    | IAbstractRegistrableComponent>new constructor({ propsData }).$mount();
+    | AbstractPageTransitionComponent
+    | AbstractTransitionComponent
+    | AbstractRegistrableComponent>new constructor({ propsData }).$mount();
 };
 
 /**
  * @description get a child component based on it's componentId
- * @param {IAbstractRegistrableComponent} app
+ * @param {AbstractRegistrableComponent} app
  * @param {string} componentId
- * @returns {Promise<IAbstractPageTransitionComponent|IAbstractTransitionComponent|IAbstractRegistrableComponent>}
+ * @returns {Promise<AbstractPageTransitionComponent|AbstractTransitionComponent|AbstractRegistrableComponent>}
  */
 export const getChildComponent = (
-  app: IAbstractRegistrableComponent,
+  app: AbstractRegistrableComponent,
   componentId: string,
 ): Promise<
-  IAbstractPageTransitionComponent | IAbstractTransitionComponent | IAbstractRegistrableComponent
+  AbstractPageTransitionComponent | AbstractTransitionComponent | AbstractRegistrableComponent
 > => {
   return new Promise(resolve => {
     app.allComponentsReady

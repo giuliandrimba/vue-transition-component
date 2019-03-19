@@ -9,7 +9,7 @@ export class AbstractTransitionComponent extends AbstractRegistrableComponent {
     this.transitionController = null;
   }
   destroyed() {
-    if (this.transitionController !== undefined) {
+    if (this.transitionController !== undefined && this.transitionController !== null) {
       this.transitionController.dispose();
       this.transitionController = null;
     }
