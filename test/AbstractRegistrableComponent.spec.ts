@@ -8,15 +8,14 @@ import { AbstractTransitionComponent } from '../lib/mixin/AbstractTransitionComp
 describe('AbstractRegistrableComponent', () => {
   describe('checkComponentsReady', () => {
     it('should check if all components are ready', () => {
-      const component = new ChildComponentB();
+      const component = <AbstractTransitionComponent>getMountedComponent(ChildComponentB);
       expect(component.checkComponentsReady()).to.be.undefined;
     });
   });
 
   describe('isReady', () => {
     it('should trigger the isReady method because the component is ready', () => {
-      const component = new ChildComponentA();
-      console.log(component);
+      const component = <AbstractTransitionComponent>getMountedComponent(ChildComponentA);
       const childComponent = <AbstractTransitionComponent>component.$refs.ChildComponentB;
       expect(childComponent.isReady()).to.be.undefined;
     });
@@ -24,7 +23,7 @@ describe('AbstractRegistrableComponent', () => {
 
   describe('updateRegistrableComponents', () => {
     it('should trigger the updateRegistrableComponents method and wait for them to be done', () => {
-      const component = new ChildComponentB();
+      const component = <AbstractTransitionComponent>getMountedComponent(ChildComponentB);
       return component.allComponentsReady.then(() => {
         component.updateRegistrableComponents(resolve => setTimeout(resolve, 1))
           .then(components => expect(components).to.be.an('array').that.is.empty)
@@ -34,7 +33,7 @@ describe('AbstractRegistrableComponent', () => {
 
   describe('$destroy', () => {
     it('should trigger the destroy method', () => {
-      const component = new ChildComponentB();
+      const component = <AbstractTransitionComponent>getMountedComponent(ChildComponentB);
       component.$destroy();
       expect(component['_isDestroyed']).to.be.true;
     });
