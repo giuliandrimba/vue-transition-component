@@ -1,31 +1,30 @@
-import AbstractTransitionComponent from './AbstractTransitionComponent';
+import { Component, Vue } from 'vue-property-decorator';
+import { AbstractTransitionComponent } from './AbstractTransitionComponent';
 import FlowType from '../enum/FlowType';
 import FlowManager from '../util/FlowManager';
 
-export default {
-  name: 'AbstractPageTransitionComponent',
-  extends: AbstractTransitionComponent,
+@Component
+export class AbstractPageTransitionComponent extends AbstractTransitionComponent {
+  flow: number;
+  transitionOnRouteUpdate: boolean;
+  transitionInHijack: Promise<any>;
+  _isDestroyed: boolean;
+
   beforeCreate() {
     this.flow = FlowType.NORMAL;
     this.transitionOnRouteUpdate = false;
     this.transitionInHijack = Promise.resolve();
-  },
-  methods: {
-    hijackTransitionIn() {
-      return new Promise(resolve => {
-        this.transitionInHijack = new Promise(release => resolve(release));
-      });
-    },
-  },
+  }
+
   /**
    * @description Before the route is entered we trigger the transition in
    * @param to The route we are about to enter
    * @param from The route we left
    * @param next The method that releases the vue-router flow
    */
-  beforeRouteEnter(to, from, next) {
+  beforeRouteEnter(to: any, from: any, next: any) {
     /* istanbul ignore next */
-    next(vm => {
+    next((vm: any) => {
       Promise.all([FlowManager.flowHijacked, vm.transitionInHijack]).then(() => {
         if (vm.$parent && vm.$parent.allComponentsReady) {
           vm.$parent.allComponentsReady.then(() => vm.transitionIn());
@@ -34,14 +33,15 @@ export default {
         }
       });
     });
-  },
+  }
+
   /**
    * @description This method is triggered when we navigate to a sub-page of the current existing page
    * @param to The route we are about to enter
    * @param from The route we left
    * @param next The method that releases the vue-router flow
    */
-  beforeRouteUpdate(to, from, next) {
+  beforeRouteUpdate(to: any, from: any, next: any) {
     // Find the old reference and remove it
     /* istanbul ignore next */
     if (to.name === this.componentId) {
@@ -72,19 +72,20 @@ export default {
       // Release the before update hook
       next();
     }
-  },
+  }
+
   /**
    * @description This method handles the default page switches
    * @param to The route we are about to enter
    * @param from The route we left
    * @param next The method that releases the vue-router flow
    */
-  beforeRouteLeave(to, from, next) {
+  beforeRouteLeave(to: any, from: any, next: any) {
     /* istanbul ignore next */
-    to.matched.forEach((routeObject, index) => {
+    to.matched.forEach((routeObject: any, index: number) => {
       if (index === to.matched.length - 1) {
         if (routeObject.beforeEnter) {
-          routeObject.beforeEnter(to, from, guardResolveValue => {
+          routeObject.beforeEnter(to, from, (guardResolveValue: string) => {
             if (guardResolveValue === from.path) {
               next(false);
             } else {
@@ -96,5 +97,13 @@ export default {
         }
       }
     });
-  },
-};
+  }
+
+  hijackTransitionIn() {
+    return new Promise(resolve => {
+      this.transitionInHijack = new Promise(release => resolve(release));
+    });
+  }
+}
+
+export default new AbstractPageTransitionComponent();

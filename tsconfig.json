@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./src/",
     "rootDir": "./src/",
     "forceConsistentCasingInFileNames": true,
     "module": "es2015",
+    "target": "es5",
     "moduleResolution": "node",
     "noEmit": false,
     "strict": true,

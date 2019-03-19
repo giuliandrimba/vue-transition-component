@@ -3,7 +3,7 @@ import EventDispatcher from 'seng-event';
 import { IRoute } from '../../lib/interface/IRoute';
 import FlowType from '../enum/FlowType';
 import FlowEvent from '../event/FlowEvent';
-import { IAbstractPageTransitionComponent } from '../interface/IAbstractPageTransitionComponent';
+import { AbstractPageTransitionComponent } from '../mixin/AbstractPageTransitionComponent';
 
 /**
  * ### FlowManager
@@ -114,7 +114,7 @@ export class FlowManager extends EventDispatcher {
    * @param {IRoute} from The current route we are navigating away from
    */
   public start(
-    pageInstance: IAbstractPageTransitionComponent,
+    pageInstance: AbstractPageTransitionComponent,
     release: (param?: string | boolean) => void,
     to: IRoute,
     from: IRoute,
@@ -193,7 +193,7 @@ export class FlowManager extends EventDispatcher {
    * @param {IRoute} to The route we are about to navigate to
    * @returns {boolean} This indicates if the page we are going to is the same as the page we are currently on
    */
-  private isNewPageComponent(pageInstance: IAbstractPageTransitionComponent, to: IRoute): boolean {
+  private isNewPageComponent(pageInstance: AbstractPageTransitionComponent, to: IRoute): boolean {
     return pageInstance.$options.name !== to.matched[0].components.default['name'];
   }
 

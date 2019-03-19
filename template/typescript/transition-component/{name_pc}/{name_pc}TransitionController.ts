@@ -1,4 +1,4 @@
-import { AbstractTransitionController, IAbstractTransitionComponent } from 'vue-transition-component';
+import { AbstractTransitionController, AbstractTransitionComponent } from 'vue-transition-component';
 import { TimelineMax } from 'gsap';
 
 export default class {{name_pc}}TransitionController extends AbstractTransitionController {
@@ -8,12 +8,12 @@ export default class {{name_pc}}TransitionController extends AbstractTransitionC
    * @protected
    * @method setupTransitionInTimeline
    * @param {TimelineLite | TimelineMax} timeline The transition in timeline
-   * @param {IAbstractTransitionComponent} parent The reference to the parent controller
+   * @param {AbstractTransitionComponent} parent The reference to the parent controller
    * @param {string} id The transition id that was provided when constructing the controller
    */
   protected setupTransitionInTimeline(
     timeline:TimelineMax,
-    parent:IAbstractTransitionComponent,
+    parent:AbstractTransitionComponent,
     id:string): void {}
 
   /**
@@ -22,12 +22,12 @@ export default class {{name_pc}}TransitionController extends AbstractTransitionC
    * @protected
    * @method setupTransitionOutTimeline
    * @param {TimelineLite | TimelineMax} timeline The transition in timeline
-   * @param {IAbstractTransitionComponent} parent The reference to the parent controller
+   * @param {AbstractTransitionComponent} parent The reference to the parent controller
    * @param {string} id The transition id that was provided when constructing the controller
    */
   protected setupTransitionOutTimeline(
     timeline:TimelineMax,
-    parent:IAbstractTransitionComponent,
+    parent:AbstractTransitionComponent,
     id:string): void {}
 
   /**
@@ -36,11 +36,11 @@ export default class {{name_pc}}TransitionController extends AbstractTransitionC
    * @protected
    * @method setupLoopingAnimationTimeline
    * @param {TimelineLite | TimelineMax} timeline The transition in timeline
-   * @param {IAbstractTransitionComponent} parent The reference to the parent controller
+   * @param {AbstractTransitionComponent} parent The reference to the parent controller
    * @param {string} id The transition id that was provided when constructing the controller
    */
   protected setupLoopingAnimationTimeline(
     timeline:TimelineMax,
-    parent:IAbstractTransitionComponent,
+    parent:AbstractTransitionComponent,
     id:string): void {}
 }

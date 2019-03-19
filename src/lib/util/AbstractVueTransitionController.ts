@@ -1,33 +1,33 @@
 import AbstractTransitionController from 'transition-controller';
 import isString from 'lodash/isString';
 import isElement from 'lodash/isElement';
-import { IAbstractTransitionComponent } from '../interface/IAbstractTransitionComponent';
+import { AbstractTransitionComponent } from '../mixin/AbstractTransitionComponent';
 
 export default abstract class AbstractVueTransitionController extends AbstractTransitionController<
-  IAbstractTransitionComponent
+  AbstractTransitionComponent
 > {
   /**
    * This method finds a component based on a string, a html element or the instance.
    *
    * @protected
-   * @param {string | HTMLElement | IAbstractTransitionComponent} component The selector for the component
-   * @returns {IAbstractTransitionComponent} The instance of the component you requested
+   * @param {string | HTMLElement | AbstractTransitionComponent} component The selector for the component
+   * @returns {AbstractTransitionComponent} The instance of the component you requested
    */
   protected getComponent(
-    component: string | HTMLElement | IAbstractTransitionComponent,
-  ): IAbstractTransitionComponent {
-    let instance: IAbstractTransitionComponent;
+    component: string | HTMLElement | AbstractTransitionComponent,
+  ): AbstractTransitionComponent {
+    let instance: AbstractTransitionComponent;
 
     if (isElement(component)) {
-      instance = <IAbstractTransitionComponent>this.parentController.$children.find(
+      instance = <AbstractTransitionComponent>this.parentController.$children.find(
         child => child.$el === component,
       );
     } else if (isString(component)) {
-      const instances = (<Array<IAbstractTransitionComponent>>this.parentController.$children)
+      const instances = (<Array<AbstractTransitionComponent>>this.parentController.$children)
         .map(
-          (child: IAbstractTransitionComponent) => (child.componentId === component ? child : null),
+          (child: AbstractTransitionComponent) => (child.componentId === component ? child : null),
         )
-        .filter((child: IAbstractTransitionComponent) => child !== null);
+        .filter((child: AbstractTransitionComponent) => child !== null);
 
       if (instances.length > 1) {
         throw new Error(
@@ -37,7 +37,7 @@ export default abstract class AbstractVueTransitionController extends AbstractTr
 
       instance = instances.pop();
     } else {
-      instance = <IAbstractTransitionComponent>component;
+      instance = <AbstractTransitionComponent>component;
     }
 
     if (instance === undefined) {

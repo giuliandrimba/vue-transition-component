@@ -1,6 +1,12 @@
-import { IAbstractRegistrableComponent } from './lib/interface/IAbstractRegistrableComponent';
-import { IAbstractTransitionComponent } from './lib/interface/IAbstractTransitionComponent';
-import { IAbstractPageTransitionComponent } from './lib/interface/IAbstractPageTransitionComponent';
+import abstractRegistrableComponent, {
+  AbstractRegistrableComponent,
+} from './lib/mixin/AbstractRegistrableComponent';
+import abstractTransitionComponent, {
+  AbstractTransitionComponent,
+} from './lib/mixin/AbstractTransitionComponent';
+import abstractPageTransitionComponent, {
+  AbstractPageTransitionComponent,
+} from './lib/mixin/AbstractPageTransitionComponent';
 import { IRoute } from './lib/interface/IRoute';
 
 export {
@@ -18,15 +24,11 @@ export {
 export { default as FlowType } from './lib/enum/FlowType';
 export { default as FlowEvent } from './lib/event/FlowEvent';
 export {
-  IAbstractPageTransitionComponent,
-  IAbstractRegistrableComponent,
-  IAbstractTransitionComponent,
+  AbstractPageTransitionComponent,
+  abstractPageTransitionComponent,
+  AbstractRegistrableComponent,
+  abstractRegistrableComponent,
+  AbstractTransitionComponent,
+  abstractTransitionComponent,
   IRoute,
 };
-
-export const AbstractRegistrableComponent: IAbstractRegistrableComponent = require('./lib/mixin/AbstractRegistrableComponent')
-  .default;
-export const AbstractTransitionComponent: IAbstractTransitionComponent = require('./lib/mixin/AbstractTransitionComponent')
-  .default;
-export const AbstractPageTransitionComponent: IAbstractPageTransitionComponent = require('./lib/mixin/AbstractPageTransitionComponent')
-  .default;
