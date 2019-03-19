@@ -7,7 +7,7 @@ import PageComponentA from './util/PageComponentA/PageComponentA';
 describe('AbstractPageTransitionComponent', () => {
   describe('hijackTransitionIn', () => {
     it('should hijack the transition in until it\'s done', () => {
-      const component = new PageComponentA();
+      const component = <AbstractPageTransitionComponent>getMountedComponent(PageComponentA);
       return component.hijackTransitionIn().then(release => setTimeout(release, 1))
         .then(() => expect(component.transitionInHijack).to.not.be.undefined)
     });
