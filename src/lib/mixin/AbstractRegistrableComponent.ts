@@ -38,7 +38,6 @@ export class AbstractRegistrableComponent extends Vue {
     this.isRegistrable = null;
 
     if (this.registeredComponents !== undefined && this.registeredComponents !== null) {
-      console.log(this.registeredComponents);
       this.registeredComponents.length = 0;
       this.registeredComponents = null;
     }

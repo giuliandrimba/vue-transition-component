@@ -24,7 +24,6 @@ export class AbstractPageTransitionComponent extends AbstractTransitionComponent
    */
   beforeRouteEnter(to: any, from: any, next: any) {
     /* istanbul ignore next */
-    console.log('vm');
     next((vm: any) => {
       Promise.all([FlowManager.flowHijacked, vm.transitionInHijack]).then(() => {
         if (vm.$parent && vm.$parent.allComponentsReady) {
