@@ -1,4 +1,4 @@
-import AbstractRegistrableComponent from '../../../src/lib/mixin/AbstractRegistrableComponent';
+import { AbstractRegistrableComponent } from '../../../src/lib/mixin/AbstractRegistrableComponent';
 import FlowManager from '../../../src/lib/util/FlowManager';
 
 export default {

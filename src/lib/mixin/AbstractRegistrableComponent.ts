@@ -4,7 +4,9 @@ import filter from 'lodash/filter';
 
 const IS_READY = 'isReady';
 
-@Component
+@Component({
+  extends: Vue,
+})
 export class AbstractRegistrableComponent extends Vue {
   isRegistrable: boolean;
   componentId: boolean | string;
@@ -35,12 +37,13 @@ export class AbstractRegistrableComponent extends Vue {
   destroyed() {
     this.isRegistrable = null;
 
-    if (this.registeredComponents !== undefined) {
+    if (this.registeredComponents !== undefined && this.registeredComponents !== null) {
+      console.log(this.registeredComponents);
       this.registeredComponents.length = 0;
       this.registeredComponents = null;
     }
 
-    if (this.newRegisteredComponents !== undefined) {
+    if (this.newRegisteredComponents !== undefined && this.newRegisteredComponents !== null) {
       this.newRegisteredComponents.length = 0;
       this.newRegisteredComponents = null;
     }
@@ -50,7 +53,12 @@ export class AbstractRegistrableComponent extends Vue {
     // If you want to you can listen to the isReady event
     this.$emit(IS_READY, this);
     // Notify the parent about being ready
-    if (this.parentComponent !== undefined && this.parentComponent.componentReady !== undefined) {
+    if (
+      this.parentComponent !== undefined &&
+      this.parentComponent.componentReady !== undefined &&
+      this.parentComponent !== null &&
+      this.parentComponent.componentReady !== null
+    ) {
       this.parentComponent.componentReady(this);
     }
   }
@@ -144,4 +152,4 @@ export class AbstractRegistrableComponent extends Vue {
   }
 }
 
-export default new AbstractRegistrableComponent();
+export default AbstractRegistrableComponent;

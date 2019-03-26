@@ -3,9 +3,13 @@ const path = require('path');
 const projectRoot = path.resolve(__dirname, '../');
 
 module.exports = {
+  mode: 'development',
   devServer: {
     contentBase: './',
   },
+  optimization: {
+		minimize: false
+	},
   resolve: {
     extensions: ['.vue', '.js', '.ts'],
     modules: [path.resolve(projectRoot, 'node_modules')],

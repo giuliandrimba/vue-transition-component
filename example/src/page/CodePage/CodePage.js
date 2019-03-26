@@ -15,10 +15,8 @@ export default {
   },
   methods: {
     handleAllComponentsReady() {
-      console.log('test')
       this.transitionController = new CodepageTransitionController(this);
       this.$el.querySelectorAll('pre').forEach(code => hljs.highlightBlock(code));
-      this.transitionIn();
       this.isReady();
     },
   },

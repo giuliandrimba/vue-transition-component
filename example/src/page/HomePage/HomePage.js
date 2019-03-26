@@ -9,7 +9,6 @@ export default {
     handleAllComponentsReady() {
       this.transitionController = new HomePageTransitionController(this);
       this.$el.querySelectorAll('pre').forEach(code => hljs.highlightBlock(code));
-      this.transitionIn();
       this.isReady();
     },
   },
