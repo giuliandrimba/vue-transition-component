@@ -3,7 +3,7 @@ import { AbstractTransitionComponent } from "../../../../src/lib/mixin/AbstractT
 
 export default {
   name: 'DummyComponentB',
-  extends: AbstractTransitionComponent,
+  extends: new AbstractTransitionComponent().$options,
   methods: {
     handleAllComponentsReady() {
       this.transitionController = new DummyComponentBTransitionController(this);

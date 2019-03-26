@@ -3,7 +3,7 @@ import FlowManager from '../../../src/lib/util/FlowManager';
 
 export default {
   name: 'App',
-  extends: AbstractRegistrableComponent,
+  extends: new AbstractRegistrableComponent(),
   data() {
     return {
       mobileMenuActive: false,

@@ -2,9 +2,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import { AbstractRegistrableComponent } from './AbstractRegistrableComponent';
 import AbstractTransitionController from '../util/AbstractVueTransitionController';
 
-@Component({
-  extends: AbstractRegistrableComponent,
-})
+@Component({})
 export class AbstractTransitionComponent extends AbstractRegistrableComponent {
   transitionController: AbstractTransitionController;
   beforeCreate() {

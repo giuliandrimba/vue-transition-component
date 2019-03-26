@@ -207,7 +207,7 @@ export class FlowManager extends EventDispatcher {
     this.transitionOut = null;
     this.previousComponentId = null;
     /* istanbul ignore if  */
-    if (this.pointerDiv !== undefined && document.body !== null) {
+    if (this.pointerDiv !== undefined && this.pointerDiv !== null && document.body !== null) {
       document.body.removeChild(this.pointerDiv);
       this.pointerDiv = null;
     }

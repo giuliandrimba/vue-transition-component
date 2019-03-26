@@ -3,7 +3,7 @@ import { AbstractTransitionComponent } from './AbstractTransitionComponent';
 import FlowType from '../enum/FlowType';
 import FlowManager from '../util/FlowManager';
 
-@Component
+@Component({})
 export class AbstractPageTransitionComponent extends AbstractTransitionComponent {
   flow: number;
   transitionOnRouteUpdate: boolean;
@@ -82,6 +82,7 @@ export class AbstractPageTransitionComponent extends AbstractTransitionComponent
    */
   beforeRouteLeave(to: any, from: any, next: any) {
     /* istanbul ignore next */
+    console.log(to, from, next);
     to.matched.forEach((routeObject: any, index: number) => {
       if (index === to.matched.length - 1) {
         if (routeObject.beforeEnter) {

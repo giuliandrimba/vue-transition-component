@@ -7,7 +7,7 @@ import DummyComponentC from '../../component/DummyComponentC';
 
 export default {
   name: 'CodePage',
-  extends: AbstractPageTransitionComponent,
+  extends: new AbstractPageTransitionComponent().$options,
   components: {
     DummyComponentA,
     DummyComponentB,

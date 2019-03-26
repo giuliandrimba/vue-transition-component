@@ -1,12 +1,17 @@
-import { Component, Vue } from 'vue-property-decorator';
+import { Component } from 'vue-property-decorator';
+import Vue from 'vue';
 import isEqual from 'lodash/isEqual';
 import filter from 'lodash/filter';
+// Register the router hooks with their names
+Component.registerHooks([
+  'beforeRouteEnter',
+  'beforeRouteLeave',
+  'beforeRouteUpdate', // for vue-router 2.2+
+]);
 
 const IS_READY = 'isReady';
 
-@Component({
-  extends: Vue,
-})
+@Component
 export class AbstractRegistrableComponent extends Vue {
   isRegistrable: boolean;
   componentId: boolean | string;
@@ -16,13 +21,22 @@ export class AbstractRegistrableComponent extends Vue {
   asyncComponentsReady: Promise<AbstractRegistrableComponent[]>;
   allComponentsReadyResolveMethod: Function;
 
+  constructor() {
+    super();
+  }
+
   // Mutable data
   registrableComponents: Array<AbstractRegistrableComponent> = [];
 
   beforeCreate() {
     this.isRegistrable = true;
     // Root components do not contain a $vnode, so use the name as a fallback
-    if (this.$vnode !== undefined && this.$vnode.data.ref !== undefined) {
+    if (
+      this.$vnode !== undefined &&
+      this.$vnode.data.ref !== undefined &&
+      this.$vnode !== null &&
+      this.$vnode.data.ref !== null
+    ) {
       this.componentId = this.$vnode.data.ref;
     } else {
       this.componentId = this.$options.name;
@@ -106,7 +120,8 @@ export class AbstractRegistrableComponent extends Vue {
     // Check if we reached the total amount of transition components
     if (
       this.registrableComponents.length === this.registeredComponents.length &&
-      this.allComponentsReadyResolveMethod !== undefined
+      this.allComponentsReadyResolveMethod !== undefined &&
+      this.allComponentsReadyResolveMethod !== null
     ) {
       this.allComponentsReadyResolveMethod(
         filter(
