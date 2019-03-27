@@ -1,10 +1,10 @@
 import hljs from 'highlight.js';
-import { AbstractPageTransitionComponent } from '../../../../src/lib/mixin/AbstractPageTransitionComponent';
+import abstractPageTransitionComponent from '../../../../src/lib/mixin/AbstractPageTransitionComponent';
 import HomePageTransitionController from './HomePageTransitionController';
 
 export default {
   name: 'HomePage',
-  extends: new AbstractPageTransitionComponent().$options,
+  extends: abstractPageTransitionComponent,
   methods: {
     handleAllComponentsReady() {
       this.transitionController = new HomePageTransitionController(this);

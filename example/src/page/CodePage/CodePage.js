@@ -1,5 +1,5 @@
 import hljs from 'highlight.js';
-import { AbstractPageTransitionComponent } from '../../../../src/lib/mixin/AbstractPageTransitionComponent';
+import abstractPageTransitionComponent from '../../../../src/lib/mixin/AbstractPageTransitionComponent';
 import CodepageTransitionController from './CodepageTransitionController';
 import DummyComponentA from '../../component/DummyComponentA';
 import DummyComponentB from '../../component/DummyComponentB';
@@ -7,7 +7,7 @@ import DummyComponentC from '../../component/DummyComponentC';
 
 export default {
   name: 'CodePage',
-  extends: new AbstractPageTransitionComponent().$options,
+  extends: abstractPageTransitionComponent,
   components: {
     DummyComponentA,
     DummyComponentB,

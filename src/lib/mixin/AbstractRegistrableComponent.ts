@@ -166,4 +166,4 @@ export class AbstractRegistrableComponent extends Vue {
   }
 }
 
-export default AbstractRegistrableComponent;
+export default new AbstractRegistrableComponent().$options;

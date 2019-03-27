@@ -106,4 +106,4 @@ export class AbstractPageTransitionComponent extends AbstractTransitionComponent
   }
 }
 
-export default AbstractPageTransitionComponent;
+export default new AbstractPageTransitionComponent().$options;

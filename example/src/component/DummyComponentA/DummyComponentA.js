@@ -1,10 +1,10 @@
 import DummyComponentATransitionController from "./DummyComponentATransitionController";
-import { AbstractTransitionComponent } from "../../../../src/lib/mixin/AbstractTransitionComponent";
+import abstractTransitionComponent from "../../../../src/lib/mixin/AbstractTransitionComponent";
 import DummyComponentB from "../DummyComponentB";
 
 export default {
   name: 'DummyComponentA',
-  extends: new AbstractTransitionComponent().$options,
+  extends: abstractTransitionComponent,
   components: {
     DummyComponentB,
   },

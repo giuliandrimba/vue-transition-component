@@ -1,9 +1,9 @@
 import DummyComponentCTransitionController from "./DummyComponentCTransitionController";
-import { AbstractTransitionComponent } from "../../../../src/lib/mixin/AbstractTransitionComponent";
+import abstractTransitionComponent from "../../../../src/lib/mixin/AbstractTransitionComponent";
 
 export default {
   name: 'DummyComponentC',
-  extends: new AbstractTransitionComponent().$options,
+  extends: abstractTransitionComponent,
   methods: {
     handleAllComponentsReady() {
       this.transitionController = new DummyComponentCTransitionController(this);
