@@ -1,5 +1,5 @@
 <style src="./{{name_pc}}.scss" module lang="scss"></style>
-<script src="./{{name_pc}}.js"></script>
+<script src="./{{name_pc}}.ts"></script>
 
 <template>
   <div :class="[$style.{{name_cc}}]">
