@@ -30,4 +30,4 @@ export class AbstractTransitionComponent extends AbstractRegistrableComponent {
   }
 }
 
-export default new AbstractTransitionComponent().$options;
+export default new AbstractTransitionComponent();

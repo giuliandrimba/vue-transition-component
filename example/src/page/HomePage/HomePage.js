@@ -4,7 +4,7 @@ import HomePageTransitionController from './HomePageTransitionController';
 
 export default {
   name: 'HomePage',
-  extends: abstractPageTransitionComponent,
+  extends: abstractPageTransitionComponent.$options,
   methods: {
     handleAllComponentsReady() {
       this.transitionController = new HomePageTransitionController(this);

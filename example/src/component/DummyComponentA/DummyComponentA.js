@@ -4,7 +4,7 @@ import DummyComponentB from "../DummyComponentB";
 
 export default {
   name: 'DummyComponentA',
-  extends: abstractTransitionComponent,
+  extends: abstractTransitionComponent.$options,
   components: {
     DummyComponentB,
   },
