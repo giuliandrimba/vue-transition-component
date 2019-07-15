@@ -1,5 +1,4 @@
-import { Component } from 'vue-property-decorator';
-import Vue from 'vue';
+import { Component, Vue } from 'vue-property-decorator';
 import isEqual from 'lodash/isEqual';
 import filter from 'lodash/filter';
 // Register the router hooks with their names
@@ -166,4 +165,4 @@ export class AbstractRegistrableComponent extends Vue {
   }
 }
 
-export default new AbstractRegistrableComponent().$options;
+export default new AbstractRegistrableComponent();
