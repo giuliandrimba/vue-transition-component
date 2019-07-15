@@ -1,3 +1,4 @@
+import { Component } from 'vue-property-decorator';
 import { AbstractPageTransitionComponent } from 'vue-transition-component';
 import {{name_pc}}TransitionController from './{{name_pc}}TransitionController';
 
